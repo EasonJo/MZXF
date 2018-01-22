@@ -2,3 +2,4 @@
 app.iml
 .idea/
 .gradletasknamecache
+/release/

@@ -4,8 +4,7 @@ import com.eason.mzxf.bean.BaseJson
 import com.eason.mzxf.bean.SignData
 import com.eason.mzxf.bean.UserInfo
 import io.reactivex.Single
-import retrofit2.http.GET
-import retrofit2.http.Query
+import retrofit2.http.*
 
 /**
  * 网络访问接口
@@ -27,6 +26,7 @@ interface ApiService {
     /**
      * 获取用户信息
      */
-    @GET("user/getInfo.xhtml")
-    fun getInfo(@Query("keyCode") keyCode: String): Single<BaseJson<UserInfo>>
+    @FormUrlEncoded
+    @POST("user/getInfo.xhtml")
+    fun getInfo(@Field("keyCode") keyCode: String): Single<BaseJson<UserInfo>>
 }

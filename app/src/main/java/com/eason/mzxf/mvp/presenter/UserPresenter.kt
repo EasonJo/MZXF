@@ -1,8 +1,10 @@
 package com.eason.mzxf.mvp.presenter
 
 import android.app.Application
+import android.content.Intent
 import com.eason.mzxf.fetcher.RequestType
 import com.eason.mzxf.mvp.contract.UserContract
+import com.eason.mzxf.mvp.ui.activity.LoginActivity
 import com.eason.mzxf.utils.KEYCODE
 import com.eason.mzxf.utils.Preferences
 import com.jess.arms.di.scope.ActivityScope
@@ -53,11 +55,15 @@ class UserPresenter @Inject constructor(model: UserContract.Model, userInfoView:
     override fun onRequestError(errorMessage: String?) {
         Timber.e(errorMessage)
         mRootView.showMessage(errorMessage)
+        DataHelper.removeSF(mApplication, KEYCODE)
+        preferences.saveUserLoggedOut()
+        mRootView.launchActivity(Intent(mApplication, LoginActivity::class.java))
     }
 
     override fun onRequestStart(requestType: RequestType) {
         Timber.i("Start request: $requestType")
     }
+
     override fun onDestroy() {
         super.onDestroy()
         this.mErrorHandler = null

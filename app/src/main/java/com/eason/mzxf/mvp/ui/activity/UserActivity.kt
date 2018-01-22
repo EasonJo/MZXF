@@ -41,6 +41,8 @@ class UserActivity : BaseActivity<UserPresenter>(), UserContract.UserInfoView {
     }
 
     override fun launchActivity(intent: Intent?) {
+        ArmsUtils.startActivity(intent)
+        finish()
     }
 
     override fun hideLoading() {

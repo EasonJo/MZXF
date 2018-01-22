@@ -31,9 +31,9 @@ import java.io.Serializable
  */
 class BaseJson<T> : Serializable {
     @SerializedName("data")
-    val data: T? = null
+    var data: T? = null
     @SerializedName("success")
-    val success: Boolean? = false
+    var success: Boolean? = false
 
     @SerializedName("message")
     var message: String? = null
@@ -44,6 +44,6 @@ class BaseJson<T> : Serializable {
      * @return
      */
     val isSuccess: Boolean
-        get() = if (success == Api.RequestSuccess) true else false
+        get() = success == Api.RequestSuccess
 
 }
