@@ -1,13 +1,24 @@
 package com.eason.mzxf.fetcher
 
 /**
- * Created by Chatikyan on 23.09.2017.
+ * 当前 Fetcher 的请求类型
+ * @author Eason
  */
 enum class RequestType {
-
-    AUTH,
+    /**
+     * 登录
+     */
     LOGIN,
+    /**
+     * 签到
+     */
     CHECKIN,
+    /**
+     * 获取用户信息
+     */
     GET_INFO,
+    /**
+     * None
+     */
     TYPE_NONE
 }
